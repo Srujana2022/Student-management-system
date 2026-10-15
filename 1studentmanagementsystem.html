@@ -1,0 +1,89 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        h1 {
+            color: #263b70;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 300px;
+            border-radius: 10px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 8px;
+        }
+        button {
+            background: #263b70;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Management System</h1>
+
+    <div class="box">
+        <h2>Student Registration</h2>
+        <input type="text" id="name" placeholder="Student Name">
+        <br>
+        <input type="text" id="roll" placeholder="Roll Number">
+        <br>
+        <button onclick="registerStudent()">Register</button>
+        <p id="registration"></p>
+    </div>
+
+    <div class="box">
+        <h2>Student Results</h2>
+        <input type="text" id="resultRoll" placeholder="Roll Number">
+        <br>
+        <input type="number" id="marks" placeholder="Marks">
+        <br>
+        <button onclick="addResult()">Submit Result</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function registerStudent() {
+            let name = document.getElementById("name").value;
+            let roll = document.getElementById("roll").value;
+
+            if (name && roll) {
+                document.getElementById("registration").innerHTML =
+                    "Student Registered: " + name + " (" + roll + ")";
+            } else {
+                alert("Enter student name and roll number");
+            }
+        }
+
+        function addResult() {
+            let roll = document.getElementById("resultRoll").value;
+            let marks = document.getElementById("marks").value;
+
+            if (roll && marks !== "" && marks >= 0 && marks <= 100) {
+                document.getElementById("result").innerHTML =
+                    "Roll No: " + roll + "<br>Marks: " + marks +
+                    "<br>Grade: " +
+                    (marks >= 90 ? "A" : marks >= 75 ? "B" :
+                    marks >= 50 ? "C" : "Fail");
+            } else {
+                alert("Enter a valid roll number and marks (0–100)");
+            }
+        }
+    </script>
+
+</body>
+</html>
+```
